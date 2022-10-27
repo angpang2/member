@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
 </head>
 <body>
+<h2> ${sessionScope.loginEmail} 님 환영합니다.</h2>
+<h2>model값 : ${modelEmail}</h2>
+
 <a href="/save" type="text">회원가입</a> <br>
 <a href="/login" type="text">로그인</a><br>
 <a href="/members" type="text">회원목록조회</a>

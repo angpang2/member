@@ -3,13 +3,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="member">
-
-
-
-
-
-
+<mapper namespace="Member">
+    <insert id="save" parameterType="member">
+        insert into member_table(memberEmail, memberPassword, memberName, memberAge)
+        values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberAge})
+    </insert>
+    <select id="login" parameterType="member" resultType="member">
+    Select * from member_table where memberEmail=#{memberEmail} and memberPassword=#{memberPassword}
+    </select>
 
 
 </mapper>
