@@ -5,6 +5,8 @@ import com.icia.member.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MemberService {
     @Autowired
@@ -28,7 +30,17 @@ public class MemberService {
         }
     }
 
+    public List<MemberDTO> memberList() {
+        return memberRepository.memberList();
+
+    }
+
+    public MemberDTO find(Long Id) {
+        return memberRepository.find(Id);
+    }
 
 
-
+    public  List<MemberDTO> del(Long clickedId) {
+        return memberRepository.del(clickedId);
+    }
 }

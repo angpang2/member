@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class MemberController {
@@ -55,7 +56,37 @@ public class MemberController {
         }else {
             return "index";
         }
+
+
+
+
     }
+
+    @GetMapping("/members")
+    public String members(Model model){
+        List<MemberDTO> result = memberService.memberList();
+        model.addAttribute("memberList",result);
+        return "memberList";
+    }
+
+    @GetMapping("/member")
+    public String member(@RequestParam("id")Long Id , Model model ,HttpSession session){
+        MemberDTO findResult = memberService.find(Id);
+        model.addAttribute("member",findResult);
+        session.setAttribute("session",findResult);
+        return "memberDetail";
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id")Long clickedId , Model model){
+        List<MemberDTO> result = memberService.del(clickedId);
+        model.addAttribute("memberList",result);
+        //return "memberList";
+        //1. 삭제 후 목록을 DB에서 가져오고 memberList.jsp로 간다.
+        //2. redirect 방식을 이용하여 /members 주소 요청
+        return "redirect:/members";
+    }
+
 
 
 
