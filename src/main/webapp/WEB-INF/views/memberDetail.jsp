@@ -26,5 +26,7 @@
 세션에담긴 DTO : ${sessionScope.session}
 세션에담긴 DTO에담긴 id값 : ${sessionScope.session.id}
 
+<a href="/">홈으로</a>
+
 </body>
 </html>

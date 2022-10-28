@@ -49,7 +49,12 @@ public class MemberService {
        return memberRepository.get(memberEmail);
     }
 
-    public void up(MemberDTO memberDTO) {
-        memberRepository.up(memberDTO);
+    public boolean up(MemberDTO memberDTO) {
+       int result = memberRepository.up(memberDTO);
+       if(result>0){
+           return true;
+       }else {
+           return false;
+       }
     }
 }

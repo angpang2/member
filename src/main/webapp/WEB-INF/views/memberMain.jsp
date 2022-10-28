@@ -18,6 +18,8 @@
     <a href="/update?id=${sessionScope.loginEmail}">정보수정하기</a>
     <button class="btn btn-warning" onclick="updateForm()">내정보수정하기</button>
 
+  <button class="btn btn-danger" onclick="logout()">로그아웃</button>
+
     <a href="/">index.jsp</a>
 
 </div>
@@ -27,6 +29,10 @@
 
   const updateForm = () => {
     location.href = "/update";
+  }
+
+  const logout = () => {
+    location.href = "/logout";
   }
 
 </script>

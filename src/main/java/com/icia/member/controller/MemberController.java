@@ -99,7 +99,18 @@ public class MemberController {
 
     @PostMapping("/update")
     public String up(@ModelAttribute MemberDTO memberDTO){
-                memberService.up(memberDTO);
+           boolean result = memberService.up(memberDTO);
+        if(result){
+            return "redirect:/member?id="+memberDTO.getId();
+        }else {
+            return "index";
+        }
+    }
+
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
         return "index";
     }
 

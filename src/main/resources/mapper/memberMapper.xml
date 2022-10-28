@@ -29,7 +29,7 @@
     </select>
 
     <update id="up" parameterType="member">
-        update member_table set memberName = #{memberName} ,  memberPassword = #{memberPassword} where id = #{id}
+        update member_table set memberName = #{memberName} ,  memberAge = #{memberAge} where id = #{id}
     </update>
 
 

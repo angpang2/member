@@ -50,8 +50,8 @@ public class MemberRepository {
         return sql.selectOne("Member.get",memberEmail);
     }
 
-    public void up(MemberDTO memberDTO) {
-        sql.selectOne("Member.up",memberDTO);
+    public int up(MemberDTO memberDTO) {
+      return sql.update("Member.up",memberDTO);
     }
 
 }
