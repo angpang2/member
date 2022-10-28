@@ -57,4 +57,8 @@ public class MemberService {
            return false;
        }
     }
+
+    public void check(String memberEmail) {
+        memberRepository.check(memberEmail);
+    }
 }

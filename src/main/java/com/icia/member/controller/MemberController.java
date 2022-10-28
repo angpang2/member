@@ -94,8 +94,8 @@ public class MemberController {
         MemberDTO memberDTO = memberService.get(memberEmail);
         model.addAttribute("member",memberDTO);
         return "memberUpdate";
-
     }
+
 
     @PostMapping("/update")
     public String up(@ModelAttribute MemberDTO memberDTO){
@@ -113,6 +113,79 @@ public class MemberController {
         session.invalidate();
         return "index";
     }
+
+    @GetMapping("/ajax-ex")
+    public String ajaxEx(){
+        return "ajaxEx";
+    }
+
+    @GetMapping("/ajax1")
+    public @ResponseBody String ajax1(){
+        System.out.println("MemberController.ajax1");
+        return "ok";
+    }
+
+    @PostMapping("/ajax2")
+    public @ResponseBody String ajax2(){
+        System.out.println("MemberController.ajax2");
+        return "ok";
+    }
+
+    @GetMapping("/ajax3")
+    public @ResponseBody String ajax3(@RequestParam("value1")String value1, @RequestParam("value2")String value2){
+        System.out.println("MemberController.ajax3");
+        System.out.println("value1 = " + value1 + ", value2 = " + value2);
+        return "vvv";
+    }
+
+    @PostMapping ("/ajax4")
+    public @ResponseBody String ajax4(@RequestParam("value1")String value1, @RequestParam("value2")String value2){
+        System.out.println("MemberController.ajax4");
+        System.out.println("value1 = " + value1 + ", value2 = " + value2);
+        String value3 = "return";
+        return value3;
+    }
+
+    @PostMapping ("/ajax5")
+    public @ResponseBody MemberDTO ajax5(@RequestParam("value1")String value1, @RequestParam("value2")String value2){
+        System.out.println("MemberController.ajax4");
+        System.out.println("value1 = " + value1 + ", value2 = " + value2);
+        String value3 = "i am return";
+        MemberDTO memberDTO =memberService.find(12L);
+
+
+
+
+        return memberDTO;
+    }
+
+
+
+    @PostMapping ("/ajax6")
+    public @ResponseBody List<MemberDTO> ajax6(@RequestParam("value1")String value1, @RequestParam("value2")String value2){
+        System.out.println("MemberController.ajax6");
+        System.out.println("value1 = " + value1 + ", value2 = " + value2);
+        String value3 = "i am return";
+        List<MemberDTO>memberDTOList = memberService.memberList();
+
+
+        return memberDTOList;
+    }
+
+    @PostMapping("/check")
+    public @ResponseBody String check(@RequestParam("value1")String memberEmail){
+        MemberDTO result = memberService.get(memberEmail);
+        if(result==null){
+            return "yes";
+        }else{
+            return "no";
+        }
+
+
+    }
+
+
+
 
 
 

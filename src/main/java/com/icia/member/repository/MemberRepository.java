@@ -54,6 +54,9 @@ public class MemberRepository {
       return sql.update("Member.up",memberDTO);
     }
 
+    public void check(String memberEmail) {
+        sql.selectOne("Member.check",memberEmail);
+    }
 }
 
 

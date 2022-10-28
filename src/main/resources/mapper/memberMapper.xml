@@ -33,6 +33,13 @@
     </update>
 
 
+    <select id="check" resultType="member" parameterType="String">
+        select *from member_table where memberEmail=#{memberEmail}
+    </select>
+
+
+
+
 
 
 

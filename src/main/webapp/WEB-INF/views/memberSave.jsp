@@ -10,6 +10,7 @@
 <head>
     <title>MemberSave.jsp</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
+    <script src="/resources/js/jqury.js"></script>
     <style>
         #save-form{
             width: 800px;
@@ -19,8 +20,9 @@
 <body>
     <div class="container" id="save-form">
         <form action="/save" method="post" name="saveForm">
-            <input type="text" name="memberEmail" placeholder="이메일" class="form-control">
+            <input type="text" name="memberEmail" placeholder="이메일" class="form-control" onblur="emailCheck()" id="email">
             <span id="email-input-check"></span>
+            <span id="email_result"></span>
             <input type="text" name="memberPassword" placeholder="비밀번호" class="form-control">
             <input type="text" name="memberName" placeholder="이름" class="form-control">
             <input type="text" name="memberAge" placeholder="나이" class="form-control">
@@ -53,6 +55,39 @@
 
     const btn1Fn = () => {
         console.log("btn1Fn 함수호출")
+    }
+
+
+    const emailCheck = () => {
+        const memberEmail = document.getElementById("email").value;
+        console.log(memberEmail)
+        const emailResult = document.getElementById("email_result");
+        console.log(memberEmail)
+        console.log("emailCheck 함수호출")
+        $.ajax({
+            type: "post",
+            url: "/check",
+            data: {
+                value1: memberEmail
+            },
+            dataType: "text",
+            success: function (result) {
+                console.log("성공");
+                console.log(result);
+                if (result == "yes") {
+                    emailResult.innerHTML = "좋아요.";
+                    emailResult.style.color = "green";
+                } else {
+                    emailResult.innerHTML = "사용할수없습니다";
+                    emailResult.style.color = "red";
+                }
+
+            },
+            error: function () {
+                console.log("실패")
+            }
+
+        })
     }
 
 </script>
