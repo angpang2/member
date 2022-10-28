@@ -5,10 +5,7 @@ import com.icia.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -86,6 +83,27 @@ public class MemberController {
         //2. redirect 방식을 이용하여 /members 주소 요청
         return "redirect:/members";
     }
+
+
+
+    @GetMapping("/update")
+    public String updateForm(HttpSession session , Model model){
+        //세션 값을 가져오기
+        String memberEmail = (String)session.getAttribute("loginEmail");
+        // memberEmail로 DB에서 해당 회원의 전체 정보 조회
+        MemberDTO memberDTO = memberService.get(memberEmail);
+        model.addAttribute("member",memberDTO);
+        return "memberUpdate";
+
+    }
+
+    @PostMapping("/update")
+    public String up(@ModelAttribute MemberDTO memberDTO){
+                memberService.up(memberDTO);
+        return "index";
+    }
+
+
 
 
 

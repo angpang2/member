@@ -43,4 +43,13 @@ public class MemberService {
     public  List<MemberDTO> del(Long clickedId) {
         return memberRepository.del(clickedId);
     }
+
+
+    public MemberDTO get(String memberEmail) {
+       return memberRepository.get(memberEmail);
+    }
+
+    public void up(MemberDTO memberDTO) {
+        memberRepository.up(memberDTO);
+    }
 }

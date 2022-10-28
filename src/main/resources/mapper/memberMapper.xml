@@ -24,6 +24,16 @@
         delete from member_table where id=#{clickedId};
     </delete>
 
+    <select id="get" resultType="member" parameterType="String">
+        select *from member_table where memberEmail=#{memberEmail}
+    </select>
+
+    <update id="up" parameterType="member">
+        update member_table set memberName = #{memberName} ,  memberPassword = #{memberPassword} where id = #{id}
+    </update>
+
+
+
 
 
 

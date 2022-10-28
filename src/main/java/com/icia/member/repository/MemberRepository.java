@@ -44,6 +44,16 @@ public class MemberRepository {
             return null;
         }
     }
+
+
+    public MemberDTO get(String memberEmail) {
+        return sql.selectOne("Member.get",memberEmail);
+    }
+
+    public void up(MemberDTO memberDTO) {
+        sql.selectOne("Member.up",memberDTO);
+    }
+
 }
 
 

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
 </head>
 <body>
-<h2> ${sessionScope.loginEmail} 님 환영합니다.</h2>
+<h2> ${sessionScope.inform.memberName} 님 환영합니다.</h2>
 <h2>model값 : ${modelEmail}</h2>
 
 <a href="/save" type="text">회원가입</a> <br>
@@ -21,6 +21,7 @@
 <button class="btn btn-primary" onclick="saveFn()">회원가입</button>
 <button class="btn btn-danger" onclick="loginFn()">로그인</button>
 <button class="btn btn-dark" onclick="listFn()">목록</button>
+${inform}
 
 </body>
 
