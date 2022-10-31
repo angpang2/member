@@ -184,7 +184,18 @@ public class MemberController {
 
     }
 
+//    @PostMapping("/detail-ajax")
+//    public @ResponseBody MemberDTO detailAjax(@RequestParam("value1")Long id,Model model) {
+//        MemberDTO result = memberService.find(id);
+//        model.addAttribute("member", result);
+//        return result;
+//    }
 
+    @PostMapping("/detail-ajax")
+    public @ResponseBody MemberDTO detailAjax (@RequestParam("value1")Long Id ){
+        MemberDTO findResult = memberService.find(Id);
+        return findResult;
+    }
 
 
 
@@ -197,3 +208,17 @@ public class MemberController {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
